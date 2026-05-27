@@ -2,12 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" sizes="any" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#2c2417" />
+
+    <!-- Primary SEO -->
     <meta
       name="description"
       content="CH iDesign & Renovation — interior design and renovation studio in Batu Kawan, Penang. Spaces that inspire the way you live."
     />
+    <!-- TODO: confirm production domain (assumed chidr.com.my from the company email) -->
+    <link rel="canonical" href="https://chidr.com.my/" />
+
+    <!-- Open Graph (Facebook / WhatsApp / LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CH iDesign & Renovation" />
+    <meta property="og:title" content="CH iDesign & Renovation — Interior Design Studio, Penang" />
+    <meta
+      property="og:description"
+      content="Spaces that inspire the way you live. Interior design & renovation in Batu Kawan, Penang."
+    />
+    <meta property="og:url" content="https://chidr.com.my/" />
+    <meta property="og:image" content="https://chidr.com.my/CHIR.png" />
+    <meta property="og:locale" content="en_MY" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CH iDesign & Renovation — Interior Design Studio, Penang" />
+    <meta
+      name="twitter:description"
+      content="Spaces that inspire the way you live. Interior design & renovation in Batu Kawan, Penang."
+    />
+    <meta name="twitter:image" content="https://chidr.com.my/CHIR.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +46,30 @@
       rel="stylesheet"
     />
     <title>CH iDesign &amp; Renovation — Interior Design Studio, Penang</title>
+
+    <!-- LocalBusiness structured data (mirrors src/data/settings.js) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "InteriorDesign",
+        "name": "CH iDesign & Renovation",
+        "description": "Penang-based interior design and renovation studio. We craft warm, considered spaces — from full home makeovers to bespoke commercial fit-outs.",
+        "image": "https://chidr.com.my/CHIR.png",
+        "url": "https://chidr.com.my/",
+        "telephone": "+60 4-123 4567",
+        "email": "info@chidr.com.my",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Batu Kawan",
+          "addressLocality": "Bandar Cassia",
+          "postalCode": "14110",
+          "addressRegion": "Penang",
+          "addressCountry": "MY"
+        },
+        "openingHours": "Mo-Sa 09:00-18:00",
+        "priceRange": "$$"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

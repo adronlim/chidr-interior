@@ -27,6 +27,9 @@ export default function Login() {
 
   return (
     <div className="flex min-h-screen items-center justify-center px-6">
+      {/* React 19 hoists these to <head>; keep the admin area out of search results */}
+      <title>Admin sign in · CH iDesign</title>
+      <meta name="robots" content="noindex, nofollow" />
       <div className="w-full max-w-sm">
         <Link
           to="/"

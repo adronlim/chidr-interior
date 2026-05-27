@@ -43,6 +43,9 @@ export default function Hero() {
             src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
             alt="A warm, light-filled interior designed by CH iDesign"
             className="h-full w-full object-cover"
+            width="1200"
+            height="1500"
+            fetchPriority="high"
           />
         </div>
 

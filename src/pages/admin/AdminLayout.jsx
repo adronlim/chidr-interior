@@ -21,6 +21,9 @@ export default function AdminLayout() {
 
   return (
     <div className="flex min-h-screen bg-cream text-charcoal dark:bg-charcoal dark:text-cream">
+      {/* React 19 hoists these to <head>; keep the admin area out of search results */}
+      <title>Admin · CH iDesign</title>
+      <meta name="robots" content="noindex, nofollow" />
       <aside className="flex w-60 flex-col border-r border-charcoal/10 bg-white/50 p-6 dark:border-cream/10 dark:bg-charcoal-soft/40">
         <p className="font-display text-2xl font-semibold">
           CH <span className="text-gold dark:text-gold-light">iDesign</span>
