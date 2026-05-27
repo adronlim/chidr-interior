@@ -13,6 +13,9 @@ The full client brief, design system, data models, and phase roadmap live in
 **This file describes the code as it actually is; `context.md` describes the
 plan — where they disagree, the code is the source of truth.**
 
+Phase reports (Markdown source + generated PDF deliverable) live in
+[docs/](docs/) — see [docs/README.md](docs/README.md).
+
 ## Commands
 
 The package manager is **Yarn** (`yarn.lock` is committed). Node 22 (`.nvmrc`).
