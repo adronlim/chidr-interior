@@ -1,21 +1,28 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
+import About from '../components/About'
 import ProjectGrid from '../components/ProjectGrid'
+import Process from '../components/Process'
+import Testimonials from '../components/Testimonials'
 import ContactForm from '../components/ContactForm'
-import { projects } from '../data/projects'
+import Footer from '../components/Footer'
+import { useProjects } from '../context/ProjectsContext'
 
 export default function Home() {
+  const { published } = useProjects()
+
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
+    <div className="min-h-screen">
       <Navbar />
       <main>
         <Hero />
-        <ProjectGrid projects={projects} />
+        <About />
+        <ProjectGrid projects={published} />
+        <Process />
+        <Testimonials />
         <ContactForm />
       </main>
-      <footer className="border-t border-neutral-200 py-8 text-center text-sm text-neutral-500">
-        © {new Date().getFullYear()} CHIDR Interior
-      </footer>
+      <Footer />
     </div>
   )
 }

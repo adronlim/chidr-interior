@@ -3,22 +3,29 @@ export default function ProjectCard({ project, onSelect }) {
     <button
       type="button"
       onClick={() => onSelect?.(project)}
-      className="group block w-full text-left"
+      className="group block w-full break-inside-avoid text-left"
     >
-      <div className="aspect-[4/3] overflow-hidden bg-neutral-100">
+      <div className="relative overflow-hidden rounded-xl bg-stone dark:bg-charcoal-soft">
         <img
-          src={project.cover}
-          alt={project.title}
+          src={project.img}
+          alt={project.name}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-charcoal backdrop-blur dark:bg-charcoal/90 dark:text-cream">
+          {project.catLabel}
+        </span>
       </div>
-      <div className="mt-3">
-        <h3 className="text-base font-medium text-neutral-900">{project.title}</h3>
-        <p className="text-sm text-neutral-500">
-          {project.category} · {project.location} · {project.year}
-        </p>
+      <div className="mt-4 flex items-baseline justify-between gap-4">
+        <h3 className="font-display text-xl font-medium text-charcoal transition-colors group-hover:text-gold dark:text-cream dark:group-hover:text-gold-light">
+          {project.name}
+        </h3>
+        <span className="shrink-0 text-sm text-charcoal/50 dark:text-cream/50">
+          {project.year}
+        </span>
       </div>
+      <p className="mt-1 text-sm text-charcoal/60 dark:text-cream/60">{project.area}</p>
     </button>
   )
 }

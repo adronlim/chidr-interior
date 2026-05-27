@@ -226,14 +226,16 @@ These architectural decisions must be made before writing any Firestore code:
 
 ### Phase 1 — Frontend with Dummy Data (Current)
 - [x] HTML/CSS/JS prototype completed
-- [ ] Scaffold Vite + React + Tailwind v4 project
-- [ ] Create dummy data in `src/data/projects.js`
-- [ ] Build `ProjectGrid` + `ProjectCard` + `ProjectLightbox` components
-- [ ] Build `Navbar` with theme toggle + mobile drawer
-- [ ] Build `Hero`, `About`, `Process`, `Testimonials`, `Contact` sections
-- [ ] Build `AdminLayout` + `Dashboard` + `ProjectsTable` + `UploadProject` pages
-- [ ] Wire up `react-router-dom` routes
-- [ ] Wire up `ProjectsContext` for global state (add/edit/delete projects in-memory)
+- [x] Scaffold Vite + React + Tailwind v4 project
+- [x] Create dummy data in `src/data/projects.js` (+ `settings.js`)
+- [x] Build `ProjectGrid` + `ProjectCard` + `ProjectLightbox` components (filterable)
+- [x] Build `Navbar` with theme toggle + mobile drawer
+- [x] Build `Hero`, `About`, `Process`, `Testimonials`, `Contact`, `Footer` sections
+- [x] Build `AdminLayout` + `Dashboard` + `ProjectsTable` (CRUD) + `UploadProject` + `Settings` pages
+- [x] Build a demo `Login` + `RequireAuth` gate (hardcoded credentials)
+- [x] Wire up `react-router-dom` routes
+- [x] Wire up `ProjectsContext` for global state (add/edit/delete projects in-memory)
+- [x] Wire up `ThemeContext` for dark/light mode
 
 ### Phase 2 — Firebase Integration (Planned)
 - [ ] Set up Firebase project + Firestore + Auth

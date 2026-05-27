@@ -39,25 +39,51 @@ There is no test suite yet.
 
 ```
 src/
-  App.jsx              routes
+  App.jsx              providers + routes
   main.jsx             entry
-  index.css            Tailwind import
-  components/          Navbar, Hero, ProjectGrid, ProjectCard, ProjectLightbox, ContactForm
+  index.css            Tailwind import + @theme tokens + dark-mode variant
+  context/
+    ThemeContext.jsx   light/dark theme (data-theme attr, localStorage)
+    ProjectsContext.jsx in-memory projects + settings store, CRUD, demo auth
+  components/          Navbar, Hero, About, ProjectGrid, ProjectCard,
+                       ProjectLightbox, Process, Testimonials, ContactForm, Footer
   pages/
     Home.jsx           public portfolio (composes the section components)
-    admin/             AdminLayout, Dashboard, ProjectsTable, UploadProject
-  data/projects.js     dummy project data (Phase 1)
+    admin/             Login, RequireAuth, AdminLayout, Dashboard,
+                       ProjectsTable, UploadProject, Settings
+  data/
+    projects.js        dummy project data + category list (Phase 1)
+    settings.js        company settings, demo credentials, testimonials,
+                       services, process steps
 ```
 
 ### Routes (see [src/App.jsx](src/App.jsx))
 
 - `/` → `Home`
-- `/admin` → `AdminLayout` (nested):
+- `/admin/login` → `Login` (public)
+- `/admin` → `AdminLayout`, wrapped in `RequireAuth` (nested):
   - index → `Dashboard`
   - `projects` → `ProjectsTable`
   - `upload` → `UploadProject`
+  - `settings` → `Settings`
 
-Admin routes are **not** auth-guarded in Phase 1.
+Admin routes are guarded by `RequireAuth`, a **Phase 1 demo gate** — credentials
+are hardcoded (`admin@chidr.com.my` / `password`, in [src/data/settings.js](src/data/settings.js))
+and the session lives in `sessionStorage`. This is a stand-in for Firebase Auth,
+not real security; Phase 2 replaces it.
+
+## State
+
+Global state lives in two React contexts (Phase 1 — swapped for Firestore in
+Phase 2):
+
+- **`ThemeContext`** — `theme` + `toggleTheme`; sets `data-theme` on `<html>`,
+  persists to `localStorage`, defaults to `prefers-color-scheme`.
+- **`ProjectsContext`** — seeded from `data/`. Exposes `projects`, `published`
+  (status filter), `settings`, `isAuthed`, and the mutators `addProject`,
+  `updateProject`, `deleteProject`, `updateSettings`, `login`, `logout`. The
+  CRUD surface is shaped like a future API client. State is in-memory, so it
+  resets on full reload.
 
 ## Data shape
 
@@ -65,25 +91,32 @@ Projects come from [src/data/projects.js](src/data/projects.js). The live shape 
 
 ```js
 {
-  id: 'modern-loft',          // string slug
-  title: 'Modern Loft',
-  category: 'Residential',    // 'Residential' | 'Commercial' (free-form for now)
-  location: 'Singapore',
-  year: 2024,                 // number
-  cover: 'https://...',       // single cover image URL
-  images: ['https://...'],    // gallery URLs
-  description: '...',
+  id: 1,                       // number (Firestore: auto doc id)
+  name: 'The Serenity Residence',
+  cat: 'living',               // 'living' | 'kitchen' | 'bedroom' | 'commercial'
+  catLabel: 'Living Room',     // display label for `cat`
+  area: '1,800 sqft',
+  year: '2024',                // string
+  status: 'published',         // 'published' | 'draft'
+  img: 'https://...',          // cover image URL
+  images: ['https://...'],     // gallery URLs
+  desc: '...',
 }
 ```
 
-Note: `context.md` documents a different, older shape (`name`, `cat`, `area`,
-`status`, `img`). The code above is what's real — follow it.
+The public site shows only `published` projects; the admin sees all. Category
+filter options are exported as `categories` from the same file. This now matches
+the shape documented in `context.md`.
 
 ## Conventions
 
 - ES modules, `.jsx` for components, default exports for components/pages.
 - Functional components and hooks only.
 - Style with Tailwind utility classes inline; avoid adding bespoke CSS files.
+  Brand tokens (`cream`, `gold`, `gold-light`, `charcoal`, `font-display`,
+  `font-body`) are defined in `@theme` in [src/index.css](src/index.css) and
+  used as normal utilities; dark mode is the `dark:` variant (class-based, keyed
+  to `data-theme="dark"`).
 - Keep the project data shape flat so it maps cleanly onto a future API/CMS
   (Phase 2 plans Firebase Firestore + Auth and Cloudinary for images — see
   context.md, but none of that exists yet).

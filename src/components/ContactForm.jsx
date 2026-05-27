@@ -1,8 +1,29 @@
 import { useState } from 'react'
+import { useProjects } from '../context/ProjectsContext'
 
 const empty = { name: '', email: '', message: '' }
 
+function InfoRow({ label, value, href }) {
+  return (
+    <div>
+      <dt className="text-xs uppercase tracking-[0.25em] text-charcoal/40 dark:text-cream/40">
+        {label}
+      </dt>
+      <dd className="mt-1 text-charcoal/80 dark:text-cream/80">
+        {href ? (
+          <a href={href} className="hover:text-gold dark:hover:text-gold-light">
+            {value}
+          </a>
+        ) : (
+          value
+        )}
+      </dd>
+    </div>
+  )
+}
+
 export default function ContactForm() {
+  const { settings } = useProjects()
   const [form, setForm] = useState(empty)
   const [sent, setSent] = useState(false)
 
@@ -10,74 +31,76 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // TODO: wire up to a real endpoint.
+    // TODO (Phase 2): POST to a real enquiry endpoint.
     console.log('contact submission', form)
     setSent(true)
     setForm(empty)
   }
 
+  const inputClass =
+    'mt-1 w-full rounded-md border border-charcoal/20 bg-transparent px-3 py-2 text-charcoal outline-none transition-colors focus:border-gold dark:border-cream/20 dark:text-cream dark:focus:border-gold-light'
+
   return (
-    <section id="contact" className="mx-auto max-w-2xl px-6 py-24">
-      <h2 className="text-2xl font-light text-neutral-900">Start a project</h2>
-      <p className="mt-2 text-neutral-600">
-        Tell us a little about your space and we'll be in touch.
-      </p>
+    <section
+      id="contact"
+      className="border-t border-charcoal/10 bg-stone/40 dark:border-cream/10 dark:bg-charcoal-soft/30"
+    >
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
+        <div>
+          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-gold dark:text-gold-light">
+            Get in touch
+          </p>
+          <h2 className="font-display text-4xl font-medium leading-tight text-charcoal dark:text-cream md:text-5xl">
+            Let&rsquo;s design your space.
+          </h2>
+          <p className="mt-4 max-w-md text-charcoal/70 dark:text-cream/70">
+            Tell us a little about your project and we&rsquo;ll be in touch to
+            arrange a consultation.
+          </p>
 
-      {sent && (
-        <p className="mt-6 rounded bg-neutral-100 px-4 py-3 text-sm text-neutral-700">
-          Thanks — we received your message.
-        </p>
-      )}
+          <dl className="mt-10 space-y-6">
+            <InfoRow label="Phone" value={settings.phone} href={`tel:${settings.phone.replace(/\s/g, '')}`} />
+            <InfoRow label="Email" value={settings.email} href={`mailto:${settings.email}`} />
+            <InfoRow label="Studio" value={settings.address} />
+            <InfoRow label="Hours" value={settings.hours} />
+          </dl>
+        </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <div>
-          <label htmlFor="name" className="block text-sm text-neutral-700">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            value={form.name}
-            onChange={update}
-            required
-            className="mt-1 w-full border border-neutral-300 px-3 py-2 outline-none focus:border-neutral-900"
-          />
+          {sent && (
+            <p className="mb-6 rounded-md border border-gold/30 bg-gold/10 px-4 py-3 text-sm text-charcoal dark:border-gold-light/30 dark:text-cream">
+              Thanks — we&rsquo;ve received your message and will reply soon.
+            </p>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label htmlFor="name" className="block text-sm text-charcoal/70 dark:text-cream/70">
+                Name
+              </label>
+              <input id="name" name="name" value={form.name} onChange={update} required className={inputClass} />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm text-charcoal/70 dark:text-cream/70">
+                Email
+              </label>
+              <input id="email" name="email" type="email" value={form.email} onChange={update} required className={inputClass} />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-sm text-charcoal/70 dark:text-cream/70">
+                Message
+              </label>
+              <textarea id="message" name="message" rows={5} value={form.message} onChange={update} required className={inputClass} />
+            </div>
+            <button
+              type="submit"
+              className="rounded-md bg-gold px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-charcoal dark:bg-gold-light dark:text-charcoal dark:hover:bg-cream"
+            >
+              Send enquiry
+            </button>
+          </form>
         </div>
-        <div>
-          <label htmlFor="email" className="block text-sm text-neutral-700">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={update}
-            required
-            className="mt-1 w-full border border-neutral-300 px-3 py-2 outline-none focus:border-neutral-900"
-          />
-        </div>
-        <div>
-          <label htmlFor="message" className="block text-sm text-neutral-700">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            value={form.message}
-            onChange={update}
-            required
-            className="mt-1 w-full border border-neutral-300 px-3 py-2 outline-none focus:border-neutral-900"
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-neutral-900 px-6 py-3 text-sm text-white transition-opacity hover:opacity-90"
-        >
-          Send message
-        </button>
-      </form>
+      </div>
     </section>
   )
 }
