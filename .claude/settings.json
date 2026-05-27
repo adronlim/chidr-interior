@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn install)",
+      "Bash(yarn dev:*)",
+      "Bash(yarn build:*)",
+      "Bash(yarn preview:*)",
+      "Bash(yarn lint:*)",
+      "Bash(yarn add:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ]
+  }
+}
