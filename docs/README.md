@@ -9,6 +9,12 @@ as both an editable Markdown source and a generated PDF deliverable.
 |---|---|---|
 | Phase 1 — Frontend with Dummy Data | [phase-1-frontend.md](phase-1-frontend.md) | [phase-1-frontend.pdf](phase-1-frontend.pdf) |
 
+## Advisory
+
+| Document | Source | PDF |
+|---|---|---|
+| SEO Assessment & Action Plan | [seo-recommendations.md](seo-recommendations.md) | [seo-recommendations.pdf](seo-recommendations.pdf) |
+
 ## Regenerating a PDF
 
 The PDFs are rendered from the Markdown via a styled HTML intermediate using
