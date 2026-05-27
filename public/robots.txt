@@ -1,5 +1,8 @@
+# Note: on a GitHub Pages project subpath, crawlers only read robots.txt at the
+# host root (adronlim.github.io/robots.txt), so this file is not authoritative
+# for crawl control here — the admin area also carries a noindex meta tag.
 User-agent: *
 Allow: /
-Disallow: /admin
+Disallow: /chidr-interior/admin
 
-Sitemap: https://chidr.com.my/sitemap.xml
+Sitemap: https://adronlim.github.io/chidr-interior/sitemap.xml

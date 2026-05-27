@@ -2,13 +2,13 @@
   "name": "CH iDesign & Renovation",
   "short_name": "CH iDesign",
   "description": "Interior design and renovation studio in Batu Kawan, Penang.",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#f8f5f0",
   "theme_color": "#2c2417",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any"
