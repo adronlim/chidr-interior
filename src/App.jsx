@@ -14,7 +14,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <ProjectsProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin/login" element={<Login />} />
