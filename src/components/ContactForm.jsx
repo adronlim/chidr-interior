@@ -6,12 +6,12 @@ const empty = { name: '', email: '', message: '' }
 function InfoRow({ label, value, href }) {
   return (
     <div>
-      <dt className="text-xs uppercase tracking-[0.25em] text-charcoal/40 dark:text-cream/40">
+      <dt className="text-[10px] uppercase tracking-[0.3em] text-charcoal/40 dark:text-cream/40">
         {label}
       </dt>
-      <dd className="mt-1 text-charcoal/80 dark:text-cream/80">
+      <dd className="mt-2 font-display text-lg text-charcoal/85 dark:text-cream/85">
         {href ? (
-          <a href={href} className="hover:text-gold dark:hover:text-gold-light">
+          <a href={href} className="transition-colors hover:text-gold dark:hover:text-gold-light">
             {value}
           </a>
         ) : (
@@ -38,27 +38,24 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    'mt-1 w-full rounded-md border border-charcoal/20 bg-transparent px-3 py-2 text-charcoal outline-none transition-colors focus:border-gold dark:border-cream/20 dark:text-cream dark:focus:border-gold-light'
+    'mt-2 w-full border-0 border-b border-charcoal/25 bg-transparent px-0 py-2.5 text-charcoal outline-none transition-colors focus:border-gold dark:border-cream/25 dark:text-cream dark:focus:border-gold-light'
 
   return (
-    <section
-      id="contact"
-      className="border-t border-charcoal/10 bg-stone/40 dark:border-cream/10 dark:bg-charcoal-soft/30"
-    >
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
+    <section id="contact">
+      <div className="mx-auto grid max-w-7xl gap-x-12 gap-y-16 px-6 py-24 md:grid-cols-2 md:px-10 md:py-36">
         <div>
-          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-gold dark:text-gold-light">
-            Get in touch
+          <p className="mb-5 text-[10px] uppercase tracking-[0.4em] text-gold dark:text-gold-light md:text-xs">
+            05 — Get in touch
           </p>
-          <h2 className="font-display text-4xl font-medium leading-tight text-charcoal dark:text-cream md:text-5xl">
+          <h2 className="font-display font-medium leading-[1.02] tracking-tight text-charcoal dark:text-cream text-4xl md:text-6xl">
             Let&rsquo;s design your space.
           </h2>
-          <p className="mt-4 max-w-md text-charcoal/70 dark:text-cream/70">
+          <p className="mt-6 max-w-md text-charcoal/70 dark:text-cream/70">
             Tell us a little about your project and we&rsquo;ll be in touch to
             arrange a consultation.
           </p>
 
-          <dl className="mt-10 space-y-6">
+          <dl className="mt-12 grid gap-8 sm:grid-cols-2">
             <InfoRow label="Phone" value={settings.phone} href={`tel:${settings.phone.replace(/\s/g, '')}`} />
             <InfoRow label="Email" value={settings.email} href={`mailto:${settings.email}`} />
             <InfoRow label="Studio" value={settings.address} />
@@ -66,35 +63,35 @@ export default function ContactForm() {
           </dl>
         </div>
 
-        <div>
+        <div className="md:pl-6 lg:pl-12">
           {sent && (
-            <p className="mb-6 rounded-md border border-gold/30 bg-gold/10 px-4 py-3 text-sm text-charcoal dark:border-gold-light/30 dark:text-cream">
+            <p className="mb-6 border border-gold/30 bg-gold/10 px-4 py-3 text-sm text-charcoal dark:border-gold-light/30 dark:text-cream">
               Thanks — we&rsquo;ve received your message and will reply soon.
             </p>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-8">
             <div>
-              <label htmlFor="name" className="block text-sm text-charcoal/70 dark:text-cream/70">
+              <label htmlFor="name" className="text-[10px] uppercase tracking-[0.3em] text-charcoal/50 dark:text-cream/50">
                 Name
               </label>
               <input id="name" name="name" value={form.name} onChange={update} required className={inputClass} />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm text-charcoal/70 dark:text-cream/70">
+              <label htmlFor="email" className="text-[10px] uppercase tracking-[0.3em] text-charcoal/50 dark:text-cream/50">
                 Email
               </label>
               <input id="email" name="email" type="email" value={form.email} onChange={update} required className={inputClass} />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm text-charcoal/70 dark:text-cream/70">
+              <label htmlFor="message" className="text-[10px] uppercase tracking-[0.3em] text-charcoal/50 dark:text-cream/50">
                 Message
               </label>
               <textarea id="message" name="message" rows={5} value={form.message} onChange={update} required className={inputClass} />
             </div>
             <button
               type="submit"
-              className="rounded-md bg-gold px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-charcoal dark:bg-gold-light dark:text-charcoal dark:hover:bg-cream"
+              className="rounded-sm bg-gold px-8 py-3.5 text-sm font-medium text-white transition-colors hover:bg-charcoal dark:bg-gold-light dark:text-charcoal dark:hover:bg-cream"
             >
               Send enquiry
             </button>

@@ -13,45 +13,58 @@ export default function ProjectGrid({ projects }) {
   )
 
   return (
-    <section id="work" className="border-t border-charcoal/10 dark:border-cream/10">
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-xl">
-            <p className="mb-4 text-xs uppercase tracking-[0.35em] text-gold dark:text-gold-light">
-              Selected work
+    <section id="work">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="mb-5 text-[10px] uppercase tracking-[0.4em] text-gold dark:text-gold-light md:text-xs">
+              02 — Selected work
             </p>
-            <h2 className="font-display text-4xl font-medium leading-tight text-charcoal dark:text-cream md:text-5xl">
+            <h2 className="font-display font-medium leading-[1.02] tracking-tight text-charcoal dark:text-cream text-4xl md:text-6xl">
               Spaces we&rsquo;ve brought to life.
             </h2>
           </div>
-        </div>
 
-        <div className="mt-10 flex flex-wrap gap-2">
-          {categories.map((c) => (
-            <button
-              key={c.value}
-              type="button"
-              onClick={() => setFilter(c.value)}
-              className={`rounded-full px-4 py-2 text-sm transition-colors ${
-                filter === c.value
-                  ? 'bg-gold text-white dark:bg-gold-light dark:text-charcoal'
-                  : 'border border-charcoal/15 text-charcoal/70 hover:border-gold hover:text-gold dark:border-cream/15 dark:text-cream/70 dark:hover:border-gold-light dark:hover:text-gold-light'
-              }`}
-            >
-              {c.label}
-            </button>
-          ))}
+          <div className="flex flex-wrap gap-x-7 gap-y-3 text-sm">
+            {categories.map((c) => {
+              const isActive = filter === c.value
+              return (
+                <button
+                  key={c.value}
+                  type="button"
+                  onClick={() => setFilter(c.value)}
+                  className={`relative pb-1.5 transition-colors ${
+                    isActive
+                      ? 'text-charcoal dark:text-cream'
+                      : 'text-charcoal/45 hover:text-charcoal dark:text-cream/45 dark:hover:text-cream'
+                  }`}
+                >
+                  {c.label}
+                  <span
+                    className={`absolute inset-x-0 bottom-0 h-px origin-left transition-transform duration-300 ${
+                      isActive ? 'scale-x-100 bg-gold dark:bg-gold-light' : 'scale-x-0 bg-charcoal/40 dark:bg-cream/40'
+                    }`}
+                  />
+                </button>
+              )
+            })}
+          </div>
         </div>
 
         {visible.length === 0 ? (
-          <p className="mt-16 text-center text-charcoal/50 dark:text-cream/50">
+          <p className="mt-20 text-center text-charcoal/45 dark:text-cream/45">
             No projects in this category yet.
           </p>
         ) : (
-          <div className="mt-10 columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
-            {visible.map((project) => (
-              <ProjectCard key={project.id} project={project} onSelect={setActive} />
-            ))}
+          <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-16 md:grid-cols-2 md:gap-x-8 md:gap-y-20">
+            {visible.map((project, idx) => {
+              const isFeature = idx % 5 === 0
+              return (
+                <div key={project.id} className={isFeature ? 'md:col-span-2' : ''}>
+                  <ProjectCard project={project} onSelect={setActive} featured={isFeature} />
+                </div>
+              )
+            })}
           </div>
         )}
       </div>

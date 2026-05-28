@@ -1,31 +1,40 @@
-export default function ProjectCard({ project, onSelect }) {
+export default function ProjectCard({ project, onSelect, featured = false }) {
   return (
     <button
       type="button"
       onClick={() => onSelect?.(project)}
-      className="group block w-full break-inside-avoid text-left"
+      className="group block w-full text-left"
     >
-      <div className="relative overflow-hidden rounded-xl bg-stone dark:bg-charcoal-soft">
+      <div
+        className={`relative overflow-hidden bg-stone dark:bg-charcoal-soft ${
+          featured ? 'aspect-[16/9]' : 'aspect-[4/5]'
+        }`}
+      >
         <img
           src={project.img}
           alt={project.name}
           loading="lazy"
-          className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 text-xs font-medium text-charcoal backdrop-blur dark:bg-charcoal/90 dark:text-cream">
-          {project.catLabel}
-        </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       </div>
-      <div className="mt-4 flex items-baseline justify-between gap-4">
-        <h3 className="font-display text-xl font-medium text-charcoal transition-colors group-hover:text-gold dark:text-cream dark:group-hover:text-gold-light">
-          {project.name}
-        </h3>
-        <span className="shrink-0 text-sm text-charcoal/50 dark:text-cream/50">
+
+      <div className="mt-5 flex items-baseline justify-between gap-6">
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.35em] text-gold dark:text-gold-light">
+            {project.catLabel}
+          </p>
+          <h3 className="mt-2 font-display text-2xl font-medium leading-tight text-charcoal dark:text-cream md:text-3xl">
+            <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-1 transition-[background-size] duration-500 group-hover:bg-[length:100%_1px]">
+              {project.name}
+            </span>
+          </h3>
+          <p className="mt-2 text-sm text-charcoal/55 dark:text-cream/55">{project.area}</p>
+        </div>
+        <span className="shrink-0 font-display text-sm text-charcoal/40 dark:text-cream/40">
           {project.year}
         </span>
       </div>
-      <p className="mt-1 text-sm text-charcoal/60 dark:text-cream/60">{project.area}</p>
     </button>
   )
 }

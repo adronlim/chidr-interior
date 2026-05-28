@@ -9,56 +9,62 @@ export default function Hero() {
   const { settings } = useProjects()
 
   return (
-    <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
-      <div>
-        <p className="mb-5 text-xs uppercase tracking-[0.35em] text-gold dark:text-gold-light">
-          Interior Design &amp; Renovation · Penang
-        </p>
-        <h1 className="font-display text-5xl font-medium leading-[1.05] text-charcoal dark:text-cream md:text-6xl lg:text-7xl">
-          {settings.tagline}.
-        </h1>
-        <p className="mt-6 max-w-md text-charcoal/70 dark:text-cream/70">
-          {settings.name} crafts warm, considered interiors — from full home
-          renovations to bespoke commercial fit-outs in Batu Kawan and beyond.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <a
-            href="#contact"
-            className="rounded-md bg-gold px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-charcoal dark:bg-gold-light dark:text-charcoal dark:hover:bg-cream"
-          >
-            Start a project
-          </a>
-          <a
-            href="#work"
-            className="rounded-md border border-charcoal/20 px-6 py-3 text-sm font-medium text-charcoal transition-colors hover:border-gold hover:text-gold dark:border-cream/20 dark:text-cream dark:hover:border-gold-light dark:hover:text-gold-light"
-          >
-            View our work
-          </a>
+    <section className="relative">
+      <div className="relative h-[88vh] min-h-[600px] w-full overflow-hidden bg-charcoal">
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=80"
+          alt="A warm, light-filled interior designed by CH iDesign"
+          className="h-full w-full object-cover"
+          width="2000"
+          height="1333"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/30 via-charcoal/10 to-charcoal/80" />
+
+        <div className="absolute inset-0 mx-auto flex h-full max-w-7xl flex-col justify-between px-6 py-12 md:px-10 md:py-16 lg:py-20">
+          <p className="text-[10px] uppercase tracking-[0.45em] text-cream/85 md:text-xs">
+            Interior Design &amp; Renovation · Penang
+          </p>
+
+          <div className="max-w-5xl">
+            <h1 className="font-display font-medium leading-[0.95] tracking-tight text-cream text-5xl md:text-7xl lg:text-8xl">
+              {settings.tagline}.
+            </h1>
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg">
+              {settings.name} crafts warm, considered interiors — from full home
+              renovations to bespoke commercial fit-outs in Batu Kawan and beyond.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href="#contact"
+                className="rounded-sm bg-gold-light px-7 py-3.5 text-sm font-medium text-charcoal transition-colors hover:bg-cream"
+              >
+                Start a project
+              </a>
+              <a
+                href="#work"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-cream"
+              >
+                <span className="border-b border-cream/40 pb-1 transition-colors group-hover:border-cream">
+                  View our work
+                </span>
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative">
-        <div className="aspect-[4/5] overflow-hidden rounded-xl bg-stone dark:bg-charcoal-soft">
-          <img
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
-            alt="A warm, light-filled interior designed by CH iDesign"
-            className="h-full w-full object-cover"
-            width="1200"
-            height="1500"
-            fetchPriority="high"
-          />
-        </div>
-
-        <div className="absolute -bottom-6 -left-6 hidden gap-3 sm:flex">
+      <div className="border-b border-charcoal/10 dark:border-cream/10">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-charcoal/10 px-6 dark:divide-cream/10 md:px-10">
           {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-lg border border-charcoal/10 bg-cream/95 px-5 py-4 shadow-sm backdrop-blur dark:border-cream/10 dark:bg-charcoal/95"
-            >
-              <p className="font-display text-3xl font-semibold text-gold dark:text-gold-light">
+            <div key={stat.label} className="py-10 first:pr-6 md:py-14 md:first:pr-10">
+              <p className="font-display text-5xl font-medium text-gold dark:text-gold-light md:text-6xl">
                 {stat.value}
               </p>
-              <p className="mt-1 text-xs uppercase tracking-wider text-charcoal/60 dark:text-cream/60">
+              <p className="mt-3 text-[10px] uppercase tracking-[0.35em] text-charcoal/55 dark:text-cream/55 md:text-xs">
                 {stat.label}
               </p>
             </div>

@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-charcoal/10 bg-cream dark:border-cream/10 dark:bg-charcoal">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+      <div className="mx-auto max-w-7xl px-6 py-16 md:px-10">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="font-display text-2xl font-semibold text-charcoal dark:text-cream">
