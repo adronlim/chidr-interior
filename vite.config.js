@@ -9,6 +9,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  // Served from GitHub Pages at https://adronlim.github.io/chidr-interior/
-  base: '/chidr-interior/',
+  // Served from GitHub Pages at https://adronlim.github.io/chidr-interior-mockupv2/
+  base: '/chidr-interior-mockupv2/',
 })
