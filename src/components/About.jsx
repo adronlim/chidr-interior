@@ -25,7 +25,7 @@ export default function About() {
           {services.map((service, i) => (
             <div
               key={service.title}
-              className="bg-cream p-8 transition-colors hover:bg-stone dark:bg-charcoal dark:hover:bg-charcoal-soft md:p-10"
+              className="flex flex-col bg-cream p-8 transition-colors hover:bg-stone dark:bg-charcoal dark:hover:bg-charcoal-soft md:p-10"
             >
               <span className="font-display text-3xl font-medium text-gold/70 dark:text-gold-light/70">
                 0{i + 1}
@@ -36,6 +36,16 @@ export default function About() {
               <p className="mt-4 text-sm leading-relaxed text-charcoal/70 dark:text-cream/70">
                 {service.desc}
               </p>
+              {service.items?.length ? (
+                <ul className="mt-6 space-y-2 border-t border-charcoal/10 pt-5 text-sm text-charcoal/65 dark:border-cream/10 dark:text-cream/65">
+                  {service.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span aria-hidden className="mt-2 inline-block h-px w-3 shrink-0 bg-gold/60 dark:bg-gold-light/60" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>

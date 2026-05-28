@@ -46,15 +46,70 @@ export const services = [
   {
     title: 'Interior Design',
     desc: 'Full-room concepts, space planning, and material palettes tailored to how you live and work.',
+    items: [
+      'Space planning',
+      'Material & finish palettes',
+      'Lighting design',
+      'Custom joinery',
+      'Soft furnishing & styling',
+    ],
   },
   {
     title: 'Renovation',
     desc: 'End-to-end renovation and fit-out — managed builds, trusted trades, and a single point of contact.',
+    items: [
+      'Demolition & structural',
+      'M&E coordination',
+      'Wet works & tiling',
+      'Carpentry & cabinetry',
+      'Final commissioning',
+    ],
   },
   {
     title: 'Styling & Furnishing',
     desc: 'Bespoke joinery, furniture curation, and finishing touches that make a space feel complete.',
+    items: [
+      'Furniture sourcing',
+      'Bespoke joinery design',
+      'Art & accessory curation',
+      'Window treatments',
+      'Move-in styling',
+    ],
   },
+]
+
+// Dummy team data — Phase 1 placeholder. Replace with real bios + photos in Phase 2.
+export const team = [
+  {
+    id: 1,
+    name: 'Chong Hui Lim',
+    role: 'Founder & Lead Designer',
+    bio: 'Twenty years shaping homes across northern Malaysia, with a soft spot for warm minimalism and considered light.',
+    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 2,
+    name: 'Aisha Tan',
+    role: 'Project Architect',
+    bio: 'Trained in Glasgow, returned to Penang in 2018. Obsessed with proportion, ventilation, and what light does at 4pm.',
+    img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 3,
+    name: 'Rajesh Pillai',
+    role: 'Site & Build Lead',
+    bio: 'Fifteen years on Penang sites; the steady hand from demolition to handover. Knows every reliable trade in the state.',
+    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80',
+  },
+]
+
+// Dummy press / recognition — Phase 1 placeholder. Replace with real mentions when available.
+export const press = [
+  'Habitat & Form',
+  'Studio Quarterly',
+  'Penang Design Week ’24',
+  'Asia Renovation Awards',
+  'Spaces SEA',
 ]
 
 export const processSteps = [

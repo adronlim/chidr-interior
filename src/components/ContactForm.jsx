@@ -45,7 +45,7 @@ export default function ContactForm() {
       <div className="mx-auto grid max-w-7xl gap-x-12 gap-y-16 px-6 py-24 md:grid-cols-2 md:px-10 md:py-36">
         <div>
           <p className="mb-5 text-[10px] uppercase tracking-[0.4em] text-gold dark:text-gold-light md:text-xs">
-            05 — Get in touch
+            07 — Get in touch
           </p>
           <h2 className="font-display font-medium leading-[1.02] tracking-tight text-charcoal dark:text-cream text-4xl md:text-6xl">
             Let&rsquo;s design your space.

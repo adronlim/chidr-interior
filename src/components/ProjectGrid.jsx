@@ -1,11 +1,9 @@
 import { useMemo, useState } from 'react'
 import ProjectCard from './ProjectCard'
-import ProjectLightbox from './ProjectLightbox'
 import { categories } from '../data/projects'
 
-export default function ProjectGrid({ projects }) {
+export default function ProjectGrid({ projects, onSelect }) {
   const [filter, setFilter] = useState('all')
-  const [active, setActive] = useState(null)
 
   const visible = useMemo(
     () => (filter === 'all' ? projects : projects.filter((p) => p.cat === filter)),
@@ -18,7 +16,7 @@ export default function ProjectGrid({ projects }) {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="mb-5 text-[10px] uppercase tracking-[0.4em] text-gold dark:text-gold-light md:text-xs">
-              02 — Selected work
+              04 — Selected work
             </p>
             <h2 className="font-display font-medium leading-[1.02] tracking-tight text-charcoal dark:text-cream text-4xl md:text-6xl">
               Spaces we&rsquo;ve brought to life.
@@ -61,15 +59,13 @@ export default function ProjectGrid({ projects }) {
               const isFeature = idx % 5 === 0
               return (
                 <div key={project.id} className={isFeature ? 'md:col-span-2' : ''}>
-                  <ProjectCard project={project} onSelect={setActive} featured={isFeature} />
+                  <ProjectCard project={project} onSelect={onSelect} featured={isFeature} />
                 </div>
               )
             })}
           </div>
         )}
       </div>
-
-      <ProjectLightbox project={active} onClose={() => setActive(null)} />
     </section>
   )
 }

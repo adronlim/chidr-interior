@@ -6,7 +6,7 @@ export default function Process() {
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36">
         <div className="max-w-2xl">
           <p className="mb-5 text-[10px] uppercase tracking-[0.4em] text-gold dark:text-gold-light md:text-xs">
-            03 — How we work
+            05 — How we work
           </p>
           <h2 className="font-display font-medium leading-[1.02] tracking-tight text-charcoal dark:text-cream text-4xl md:text-6xl">
             A clear path from first idea to finished space.

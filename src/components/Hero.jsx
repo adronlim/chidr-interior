@@ -27,7 +27,7 @@ export default function Hero() {
           </p>
 
           <div className="max-w-5xl">
-            <h1 className="font-display font-medium leading-[0.95] tracking-tight text-cream text-5xl md:text-7xl lg:text-8xl">
+            <h1 className="font-display font-medium leading-[0.92] tracking-[-0.01em] text-cream text-6xl md:text-8xl lg:text-9xl">
               {settings.tagline}.
             </h1>
             <p className="mt-8 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg">

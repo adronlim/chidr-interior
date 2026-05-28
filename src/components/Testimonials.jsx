@@ -6,7 +6,7 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36">
         <div className="max-w-2xl">
           <p className="mb-5 text-[10px] uppercase tracking-[0.4em] text-gold-light md:text-xs">
-            04 — Kind words
+            06 — Kind words
           </p>
           <h2 className="font-display font-medium leading-[1.02] tracking-tight text-4xl md:text-6xl">
             Trusted by homeowners and businesses across Penang.
