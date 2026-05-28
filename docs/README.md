@@ -20,6 +20,7 @@ as both an editable Markdown source and a generated PDF deliverable.
 | Document | Source | PDF |
 |---|---|---|
 | Repo Rename — `chidr-interior` → `chidr-interior-mockupv2` | [repo-rename.md](repo-rename.md) | [repo-rename.pdf](repo-rename.pdf) |
+| Mockup Revamp — editorial direction pass + new sections (v2) | [mockup-revamp.md](mockup-revamp.md) | [mockup-revamp.pdf](mockup-revamp.pdf) |
 
 ## Regenerating a PDF
 
