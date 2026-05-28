@@ -3,6 +3,6 @@
 # for crawl control here — the admin area also carries a noindex meta tag.
 User-agent: *
 Allow: /
-Disallow: /chidr-interior-mockupv2/admin
+Disallow: /chidr-interior/admin
 
-Sitemap: https://adronlim.github.io/chidr-interior-mockupv2/sitemap.xml
+Sitemap: https://adronlim.github.io/chidr-interior/sitemap.xml
