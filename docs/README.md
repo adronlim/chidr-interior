@@ -15,6 +15,12 @@ as both an editable Markdown source and a generated PDF deliverable.
 |---|---|---|
 | SEO Assessment & Action Plan | [seo-recommendations.md](seo-recommendations.md) | [seo-recommendations.pdf](seo-recommendations.pdf) |
 
+## Operations log
+
+| Document | Source | PDF |
+|---|---|---|
+| Repo Rename — `chidr-interior` → `chidr-interior-mockupv2` | [repo-rename.md](repo-rename.md) | [repo-rename.pdf](repo-rename.pdf) |
+
 ## Regenerating a PDF
 
 The PDFs are rendered from the Markdown via a styled HTML intermediate using
